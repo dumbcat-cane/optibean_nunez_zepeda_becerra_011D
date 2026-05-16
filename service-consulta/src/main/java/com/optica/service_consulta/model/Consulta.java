@@ -21,7 +21,7 @@ public class Consulta {
 
     private String fecha;
 
-    private String diagnostico;
+    private String diagnostico; //se dan las observaciones que el cliente tuvo en la consulta
 
     private Long clienteId;
 
