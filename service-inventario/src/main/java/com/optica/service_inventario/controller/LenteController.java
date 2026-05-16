@@ -41,7 +41,7 @@ public class LenteController {
             .orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}") //borra los datos
     public ResponseEntity<Void> eliminar(@PathVariable Long id){
         inventarioService.eliminar(id);
         return ResponseEntity.noContent().build();
