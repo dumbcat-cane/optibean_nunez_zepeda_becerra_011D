@@ -18,6 +18,6 @@ public class Condicion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String condicion;
+    private String condicion; //Miopia, Hipermetropia, Astigmatismo
 
 }
