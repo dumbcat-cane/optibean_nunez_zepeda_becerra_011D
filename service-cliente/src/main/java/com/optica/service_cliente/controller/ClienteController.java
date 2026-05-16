@@ -39,7 +39,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.guardar(cliente));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //esto sirve en el put de postman para modificar algo o actualizar algun dato
     public ResponseEntity<Cliente> actualizar(@PathVariable Long id, @RequestBody Cliente clienteActualizado) {
         return clienteService.actualizar(id, clienteActualizado)
             .map(ResponseEntity::ok)
