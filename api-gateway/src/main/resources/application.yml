@@ -1,0 +1,35 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+
+        - id: cliente-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/clientes/**
+
+        - id: proveedor-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/proveedor/**
+
+        - id: inventario-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/v1/**
+
+        - id: consulta-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/consultas/**
+
+        - id: receta-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/recetas/**
