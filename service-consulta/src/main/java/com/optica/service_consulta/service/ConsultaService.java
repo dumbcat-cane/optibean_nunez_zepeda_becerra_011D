@@ -22,7 +22,9 @@ public class ConsultaService {
 
     public Consulta guardarConsulta(Consulta consulta){
         Consulta guardada = consultaRepository.save(consulta);
-        return enriquecerConCliente(guardada);
+        Consulta completa = consultaRepository.findById(guardada.getId())
+                .orElse(guardada);
+        return enriquecerConCliente(completa);
     }
 
     public Consulta obtenerConsulta(Long id){
@@ -44,7 +46,11 @@ public class ConsultaService {
 
 
     public List<Consulta> listarTodas(){
-        return consultaRepository.findAll();
+        List<Consulta> consultas = consultaRepository.findAll();
+        for(Consulta consulta : consultas){
+            enriquecerConCliente(consulta);
+        }
+        return consultas;
     }
     
     public Optional<Consulta> actualizar(Long id, Consulta consultaActualizada) {
