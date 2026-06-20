@@ -7,6 +7,20 @@ spring:
 
   cloud:
     gateway:
+
+      # --- CONFIGURACIÓN DE CORS GLOBAL ---
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:8081"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+
       routes:
 
         - id: cliente-service
@@ -34,7 +48,7 @@ spring:
           predicates:
             - Path=/recetas/**
 
-        - id: receta-service
+        - id: ventas-service
           uri: http://localhost:8087
           predicates:
             - Path=/ventas/**
@@ -49,7 +63,6 @@ spring:
           predicates:
             - Path=/envio/**
 
-
         - id: medico-service
           uri: http://localhost:8090
           predicates:
@@ -59,3 +72,20 @@ spring:
           uri: http://localhost:8091
           predicates:
             - Path=/garantias/**
+
+        # Ruta para la documentación de Ventas
+        - id: ventas-docs
+          uri: http://localhost:8087
+          predicates:
+            - Path=/ventas/api-docs
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Servicio Ventas
+        url: /ventas/api-docs

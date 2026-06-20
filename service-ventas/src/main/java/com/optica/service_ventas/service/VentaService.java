@@ -70,8 +70,7 @@ public class VentaService {
                 Object cliente =
                     webClientBuilder.build()
                     .get()
-                    .uri("http://localhost:8082/clientes/"
-                        + venta.getIdCliente())
+                    .uri("http://localhost:8082/clientes/" + venta.getIdCliente())
                     .retrieve()
                     .bodyToMono(Object.class)
                     .block();
