@@ -55,8 +55,8 @@ public class EstadisticasController {
 
     @Operation(summary = "Actualizar estadística")
     @ApiResponses(value = {
-    @ApiResponse(responseCode = "200", description = "Paciente encontrado"),
-    @ApiResponse(responseCode = "404", description = "No existe el paciente que busca", 
+    @ApiResponse(responseCode = "200", description = "estadistica encontrada"),
+    @ApiResponse(responseCode = "404", description = "No existe la estadistica que busca", 
         content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
 
