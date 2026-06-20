@@ -1,5 +1,6 @@
 package com.optica.service_estadisticas.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,14 +25,14 @@ public class Estadisticas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "el nombre del reporte no debe estar vacio")
     private String nombreReporte;
-
-    @NotNull
+    
+    @NotNull(message = "la observacion no debe estar vacia")
     private String observacion;
 
     private Long idLente;
-
+    @Schema(description = "Datos de los lentes se cargan en tiempo de ejecucion via webclient", accessMode = Schema.AccessMode.READ_ONLY)
     @Transient
     private Object datoslente;
 
