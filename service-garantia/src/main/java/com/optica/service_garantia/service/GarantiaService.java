@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.optica.service_garantia.model.Garantia;
 import com.optica.service_garantia.repository.GarantiaRepository;
 
+//no mover nada aqui
 @Service
 
 public class GarantiaService {
