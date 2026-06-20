@@ -77,7 +77,12 @@ spring:
         - id: ventas-docs
           uri: http://localhost:8087
           predicates:
-            - Path=/ventas/api-docs
+            - Path=/ventas-docs
+        # Ruta para la documentación de Medicos
+        - id: medicos-docs
+          uri: http://localhost:8090
+          predicates:
+            - Path=/medicos-docs
 
 eureka:
   client:
@@ -88,4 +93,6 @@ springdoc:
   swagger-ui:
     urls:
       - name: Servicio Ventas
-        url: /ventas/api-docs
+        url: /ventas-docs
+      - name: Servicio Medicos
+        url: /medicos-docs

@@ -19,6 +19,17 @@
             "mainClass": "com.optica.api_gateway.ApiGatewayApplication",
             "projectName": "api-gateway",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=55235 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-gateway"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceMedicoApplication<service-medico>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_medico.ServiceMedicoApplication",
+            "projectName": "service-medico",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]
