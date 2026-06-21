@@ -66,7 +66,7 @@ public class EstadisticasController {
         .map(ResponseEntity::ok)
         .orElseThrow(() -> new RuntimeException("estadistica no encontrada"));
     }
-
+    @Operation(summary = "Elimina una estadística")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id){
         estadisticasService.eliminar(id);
