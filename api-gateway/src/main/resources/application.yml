@@ -84,6 +84,11 @@ spring:
           predicates:
             - Path=/medicos-docs
 
+        - id: estadisticas-docs
+          uri: http://localhost:8088
+          predicates:
+            - Path=/estadisticas-docs
+
 eureka:
   client:
     register-with-eureka: false
@@ -96,3 +101,5 @@ springdoc:
         url: /ventas-docs
       - name: Servicio Medicos
         url: /medicos-docs
+      - name: Servicio estadistica
+        url: /estadisticas-docs
