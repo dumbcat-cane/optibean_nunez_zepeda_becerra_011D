@@ -22,7 +22,7 @@ public class OpenApiConfig {
                 .description("Documentación centralizada del Sistema de estadisticas"))
         
             .servers(List.of(
-                new Server().url("http://localhost:8082").description("Servidor a través del Gateway")
+                new Server().url("http://localhost:8081").description("Servidor a través del Gateway")
             ));
     }
 

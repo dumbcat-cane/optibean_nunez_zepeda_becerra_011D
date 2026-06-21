@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 
 
-
+@Schema(description = "modelo que representa una estadisitica del inventario de lentes")
 public class Estadisticas {
 
     @Id

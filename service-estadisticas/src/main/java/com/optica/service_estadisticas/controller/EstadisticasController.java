@@ -47,7 +47,7 @@ public class EstadisticasController {
 
     }
 
-
+    @Operation(summary = "lista toda las estadisiticas")
     @GetMapping
     public List<Estadisticas> listar(){
         return estadisticasService.listarTodos();
