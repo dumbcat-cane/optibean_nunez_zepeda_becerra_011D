@@ -50,6 +50,7 @@ public class EstadisticasService {
         .map(estadisticas -> {
             estadisticas.setNombreReporte(estadisticaActualizada.getNombreReporte());
             estadisticas.setObservacion(estadisticaActualizada.getObservacion());
+            estadisticas.setIdLente(estadisticaActualizada.getIdLente());
             return estadisticasRepository.save(estadisticas);
         });
         
@@ -66,24 +67,31 @@ public class EstadisticasService {
 
 
     private Estadisticas enriquecerConInventario(Estadisticas estad){
-        if(estad.getIdLente() !=null){
+        if(estad.getIdLente() != null){
+
             try{
-                Object invetario = webClientBuilder.build()
-                .get()
-                .uri("http//localhost:8084/inventario/" + estad.getIdLente())
-                .retrieve()
-                .bodyToMono(Object.class)
-                .block();
-            estad.setDatoslente(invetario);
+
+                Object lente =
+                    webClientBuilder.build()
+                    .get()
+                    .uri("http://localhost:8084/api/v1/lentes/"
+                        + estad.getIdLente())
+                    .retrieve()
+                    .bodyToMono(Object.class)
+                    .block();
+
+                estad.setDatoslente(lente);
+
             }catch(Exception e){
+
                 estad.setDatoslente(
-                    "Informacion del inventario no disponible"
+                    "Informacion del lente no disponible"
                 );
             }
         }
+
         return estad;
     }
-    
 
 
 

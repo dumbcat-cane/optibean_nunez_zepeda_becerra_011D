@@ -30,6 +30,90 @@
             "mainClass": "com.optica.service_medico.ServiceMedicoApplication",
             "projectName": "service-medico",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceClienteApplication<service-cliente>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_cliente.ServiceClienteApplication",
+            "projectName": "service-cliente",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceInventarioApplication<service-inventario>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_inventario.ServiceInventarioApplication",
+            "projectName": "service-inventario",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceEstadisticasApplication<service-estadisticas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_estadisticas.ServiceEstadisticasApplication",
+            "projectName": "service-estadisticas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceConsultaApplication<service-consulta>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_consulta.ServiceConsultaApplication",
+            "projectName": "service-consulta",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceEnvioApplication<service-envio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_envio.ServiceEnvioApplication",
+            "projectName": "service-envio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceGarantiaApplication<service-garantia>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_garantia.ServiceGarantiaApplication",
+            "projectName": "service-garantia",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceProveedorApplication<service-proveedor>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_proveedor.ServiceProveedorApplication",
+            "projectName": "service-proveedor",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceRecetaApplication<service-receta>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.optica.service_receta.ServiceRecetaApplication",
+            "projectName": "service-receta",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]

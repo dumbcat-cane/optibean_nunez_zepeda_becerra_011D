@@ -12,7 +12,7 @@ spring:
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "http://localhost:8081"
+            allowedOrigins: "*"
             allowedMethods:
               - GET
               - POST
@@ -84,6 +84,16 @@ spring:
           predicates:
             - Path=/medicos-docs
 
+        - id: estadisticas-docs
+          uri: http://localhost:8088
+          predicates:
+            - Path=/estadisticas-docs
+
+        - id: estadisticas-docs
+          uri: http://localhost:8091
+          predicates:
+            - Path=/garantia-docs
+
 eureka:
   client:
     register-with-eureka: false
@@ -96,3 +106,7 @@ springdoc:
         url: /ventas-docs
       - name: Servicio Medicos
         url: /medicos-docs
+      - name: Servicio estadistica
+        url: /estadisticas-docs
+      - name: Servicio garantia
+        url: /garantia-docs
