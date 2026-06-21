@@ -85,6 +85,11 @@ spring:
 
         # Rutas doocccc
 
+        - id: proveedor-docs
+          uri: http://localhost:8083
+          predicates:
+            - Path=/provedor-docs
+
         - id: lentes-docs
           uri: http://localhost:8084
           predicates:
@@ -127,6 +132,8 @@ springdoc:
   swagger-ui:
     urls:
 
+      - name: Servicio Proveedor
+        url: /provedor-docs
       - name: Servicio Inventario
         url: /lentes-docs
       - name: Servicio Recetas
