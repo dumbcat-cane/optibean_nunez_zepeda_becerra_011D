@@ -100,6 +100,11 @@ spring:
           predicates:
             - Path=/lentes-docs
 
+        - id: consulta-docs
+          uri: http://localhost:8085
+          predicates:
+            - Path=/consulta-docs
+
         - id: receta-docs
           uri: http://localhost:8086
           predicates:
@@ -136,7 +141,8 @@ eureka:
 springdoc:
   swagger-ui:
     urls:
-
+      - name: Servicio Consulta
+        url: /consulta-docs
       - name: Servicio Clientes
         url: /doc-clientes
       - name: Servicio Proveedor
