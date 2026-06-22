@@ -59,6 +59,7 @@ public class MedicoServiceTest {
 
        
         when(responseSpec.bodyToMono(Object.class)).thenReturn(Mono.just(consultaMock));
+        when(medicoRepository.findById(medicoId)).thenReturn(Optional.of(medicoMock));
 
         Medico resultado = medicoService.obtenerMedicoCompleto(medicoId);
         assertNotNull(resultado.getDatosConsulta(), "los datos de la consulta deben estar presentes");

@@ -37,7 +37,7 @@ public class EnvioController {
     @Operation(summary = "crea un envio")
     @PostMapping
     public Envio crear(@RequestBody Envio envio){
-        return envioService.guardar(envio);
+        return envioService.guardarEnvio(envio);
     }
 
     @Operation(summary = "lista de todos los envios")
@@ -49,25 +49,9 @@ public class EnvioController {
     @Operation(summary = "obtiener un envio por su id")
     @GetMapping("/{id}")
     public Envio obtener(@PathVariable Long id){
-        Optional<Envio> envioOptional = Optional.ofNullable(envioService.buscarporid(id));
-        if (envioOptional.isPresent()) {
-            return envioOptional.get();
-        }
-        return null;
+        return envioService.ObtenerEnvioCompleto(id);
     }
 
-    @Operation(
-        summary = "Buscar envios por estado", 
-        description = "Retorna una lista de todos los envios que coincidan con el estado proporcionado (ej: 'PENDIENTE', 'DESPACHADO')")
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Lista de envios filtrada obtenida con exito"),
-        @ApiResponse(responseCode = "400", description = "El estado proporcionado no es valido")
-    })
-
-    @GetMapping("/buscar/estado/{estado}")
-    public List<Envio> buscarPorEstado(@PathVariable String estado){
-        return envioService.buscarPorEstado(estado);
-    }
 
     @Operation(summary = "Actualizar un envio", description = "Modifica los datos de un envio existente buscando por su ID unico")
     @ApiResponses(value = {

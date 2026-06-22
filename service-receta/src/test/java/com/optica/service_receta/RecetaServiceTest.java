@@ -7,7 +7,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+<<<<<<< HEAD
 import java.util.Optional; 
+=======
+import java.util.Optional;
+>>>>>>> 017a63fe21384bd52294ef5914acabafe3f45fa7
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -59,6 +63,7 @@ public class RecetaServiceTest {
         when(uriSpec.uri(anyString())).thenReturn(headersSpec);
         when(headersSpec.retrieve()).thenReturn(responseSpec);
         when(responseSpec.bodyToMono(Object.class)).thenReturn(Mono.just(consultaMock));
+        when(recetaRepository.findById(recetaId)).thenReturn(Optional.of(recetaMock));
 
         when(recetaRepository.findById(recetaId)).thenReturn(Optional.of(recetaMock));
 
