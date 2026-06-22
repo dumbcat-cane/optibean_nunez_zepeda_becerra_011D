@@ -14,7 +14,6 @@ import jakarta.transaction.Transactional;
 
 @Service
 public class EnvioService {
-
     @Autowired
     private EnvioRepository enviorepository;
 
@@ -24,7 +23,15 @@ public class EnvioService {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-    public List<Envio> listartodos() {
+
+    public Envio guardarEnvio(Envio envio){
+        Envio guardado = enviorepository.save(envio);
+
+        Envio completo = enviorepository.findById(guardado.getIdEnvio()).orElse(guardado);
+        return enriquecerConVenta(completo);
+    }
+
+    public List<Envio> listartodos() {//listar listo
         List<Envio> envios = enviorepository.findAll();
 
         for(Envio envio : envios){
@@ -34,7 +41,7 @@ public class EnvioService {
         return envios;
     }
 
-    public Envio buscarporid(Long id) {
+    public Envio ObtenerEnvioCompleto(Long id) {
         Envio envio = enviorepository.findById(id).orElse(null);
         if(envio != null){
             return enriquecerConVenta(envio);
@@ -42,28 +49,7 @@ public class EnvioService {
         return null;
     }
 
-    public List<Envio> buscarPorEstado(String estado) {
-        return enviorepository.findByEstadoContainingIgnoreCase(estado);
-    }
 
-    @Transactional
-    public Envio guardar(Envio envio) {
-        return enviorepository.save(envio);
-    }
-
-    @Transactional
-    public Optional<Envio> actualizar(Long id, Envio envioDetalles) {
-        return enviorepository.findById(id).map(envioExistente -> {
-            envioExistente.setFechaDespacho(envioDetalles.getFechaDespacho());
-            envioExistente.setFechaEntrega(envioDetalles.getFechaEntrega());
-            envioExistente.setDireccion(envioDetalles.getDireccion());
-            envioExistente.setEstado(envioDetalles.getEstado());
-            envioExistente.setIdVenta(envioDetalles.getIdVenta());
-            return enviorepository.save(envioExistente);
-        });
-    }
-
-    @Transactional
     public Notificacion guardarNotificacion(Notificacion notificacion) {
         return notificacionrepository.save(notificacion);
     }
@@ -74,6 +60,18 @@ public class EnvioService {
 
     public void eliminar(Long id){//elimina por id una receta
         enviorepository.deleteById(id);
+        
+    }
+
+    public Optional<Envio> actualizar(Long id, Envio envioDetalles) {
+        return enviorepository.findById(id).map(envioExistente -> {
+            envioExistente.setFechaDespacho(envioDetalles.getFechaDespacho());
+            envioExistente.setFechaEntrega(envioDetalles.getFechaEntrega());
+            envioExistente.setDireccion(envioDetalles.getDireccion());
+            envioExistente.setEstado(envioDetalles.getEstado());
+            envioExistente.setIdVenta(envioDetalles.getIdVenta());
+            return enviorepository.save(envioExistente);
+        });
     }
 
     private Envio enriquecerConVenta(Envio envio) {

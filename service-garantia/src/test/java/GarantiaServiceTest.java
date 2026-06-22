@@ -1,5 +1,3 @@
-package com.optica.service_receta;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -17,36 +15,34 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.optica.service_receta.model.ConsultaDTO;
-import com.optica.service_receta.model.Receta;
-import com.optica.service_receta.repository.RecetaRepository;
-import com.optica.service_receta.service.RecetaService;
+import com.optica.service_garantia.model.Garantia;
+import com.optica.service_garantia.model.VentaDTO;
+import com.optica.service_garantia.repository.GarantiaRepository;
+import com.optica.service_garantia.service.GarantiaService;
 
 import reactor.core.publisher.Mono;
 
 @ExtendWith(MockitoExtension.class)
+public class GarantiaServiceTest {
 
-
-
-public class RecetaServiceTest {
     @Mock
-    private RecetaRepository recetaRepository;
+    private GarantiaRepository garantiaRepository;
     @Mock
     private WebClient.Builder webclientBuilder;
     @InjectMocks
-    private RecetaService recetaService;
+    private GarantiaService garantiaService;
     @Test
     void obtenerRecetaCompletaTest(){
-        Long recetaId= 1L;
-        Long ConsultaId=100L;
+        Long garantiaId = 1L;
+        Long VentaId = 100l;
 
-        Receta recetaMock = new Receta();
-        recetaMock.setId(recetaId);
-        recetaMock.setIdConsulta(ConsultaId);
+        Garantia garantiaMock = new Garantia();
+        garantiaMock.setId(garantiaId);
+        garantiaMock.setIdventa(VentaId);
 
-        ConsultaDTO consultaMock = new ConsultaDTO();
-        consultaMock.setId(ConsultaId);
-        consultaMock.setDiagnostico("Miopia");
+        VentaDTO ventaMock= new VentaDTO();
+        ventaMock.setId(VentaId);
+        ventaMock.setMontofecha(25000);
         WebClient webClient = Mockito.mock(WebClient.class);
         WebClient.RequestHeadersUriSpec uriSpec = Mockito.mock(WebClient.RequestHeadersUriSpec.class);
         WebClient.RequestHeadersSpec headersSpec = Mockito.mock(WebClient.RequestHeadersSpec.class);
@@ -57,16 +53,18 @@ public class RecetaServiceTest {
         when(uriSpec.uri(anyString())).thenReturn(headersSpec);
         when(headersSpec.retrieve()).thenReturn(responseSpec);
 
-        when(responseSpec.bodyToMono(Object.class)).thenReturn(Mono.just(consultaMock));
-        when(recetaRepository.findById(recetaId)).thenReturn(Optional.of(recetaMock));
+        when(responseSpec.bodyToMono(Object.class)).thenReturn(Mono.just(ventaMock));
+        when(garantiaRepository.findById(garantiaId)).thenReturn(Optional.of(garantiaMock));
 
-        Receta resultado = recetaService.obtenerRecetaCompleto(recetaId);
-        assertNotNull(resultado.getDatosConsulta(),"los datos de consulta deben estar presentes");
+        Garantia resultado = garantiaService.obtenerGarantiaCompleta(garantiaId);
+        assertNotNull(resultado.getDatosVenta(),"los datos de venta deben estar presentes");
+        
+        VentaDTO datosretornados=(VentaDTO) resultado.getDatosVenta();
+        assertEquals(25000,datosretornados.getMontofecha(),"el monto deberia coincidir con el simulado");
+        assertEquals(VentaId, datosretornados.getId());
+        verify(garantiaRepository,times(1)).findById(garantiaId);
 
-        ConsultaDTO datosRetornados =(ConsultaDTO) resultado.getDatosConsulta();
-        assertEquals("Miopia", datosRetornados.getDiagnostico(),"El diagnostico debe coincidir con el simulado");
-        assertEquals(ConsultaId, datosRetornados.getId());
-        verify(recetaRepository,times(1)).findById(recetaId);
+        
     }
 
 }
