@@ -17,9 +17,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("API Estadisticas | Servicio de Estadisticas")
+                .title("API Garantias | Servicio de Garantias")
                 .version("1.0")
-                .description("Documentación centralizada del Sistema de estadisticas"))
+                .description("Documentación centralizada del Sistema de garantias"))
         
             .servers(List.of(
                 new Server().url("http://localhost:8081").description("Servidor a través del Gateway")
