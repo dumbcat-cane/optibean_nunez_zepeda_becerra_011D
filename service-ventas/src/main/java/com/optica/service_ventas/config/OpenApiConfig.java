@@ -1,4 +1,4 @@
-package com.optica.service_cliente.config;
+package com.optica.service_ventas.config;
 
 import java.util.List;
 
@@ -9,15 +9,16 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
 @Configuration
+
 public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("API Cliente | Servicio de Clientes")
+                .title("API Ventas | Servicio de ventas")
                 .version("1.0")
-                .description("Documentación centralizada del Sistema de Clientes"))
+                .description("Documentación centralizada del Sistema de ventas"))
         
             .servers(List.of(
                 new Server().url("http://localhost:8081").description("Servidor a través del Gateway")
