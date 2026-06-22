@@ -88,7 +88,7 @@ spring:
         - id: clientes-docs
           uri: http://localhost:8082
           predicates:
-            - Path=/doc-clientes
+            - Path=/clientes-docs
 
         - id: proveedor-docs
           uri: http://localhost:8083
@@ -151,7 +151,7 @@ springdoc:
       - name: Servicio Consulta
         url: /consulta-docs
       - name: Servicio Clientes
-        url: /doc-clientes
+        url: /clientes-docs
       - name: Servicio Proveedor
         url: /provedor-docs
       - name: Servicio Inventario
