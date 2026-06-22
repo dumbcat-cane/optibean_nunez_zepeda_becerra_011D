@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +28,8 @@ public class Proveedor {
     private String run;
     @Schema(description = "debe agregar el primer nombre",example = "pepito")
     private String nombre;
-    @NotBlank(message = "el telefono es obligatorio")
-    private int telefono;
+    @NotNull(message = "el telefono es obligatorio")
+    private Integer telefono;
     @NotBlank(message = "el correo es obligatorio")
     private String correo;
 
