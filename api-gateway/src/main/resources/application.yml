@@ -120,6 +120,11 @@ spring:
           predicates:
             - Path=/estadisticas-docs
 
+        - id: envio-docs
+          uri: http://localhost:8089
+          predicates:
+            - Path=/envio-docs
+
         - id: medicos-docs
           uri: http://localhost:8090
           predicates:
@@ -141,6 +146,8 @@ eureka:
 springdoc:
   swagger-ui:
     urls:
+      - name: Servicio Envio
+        url: /envio-docs
       - name: Servicio Consulta
         url: /consulta-docs
       - name: Servicio Clientes

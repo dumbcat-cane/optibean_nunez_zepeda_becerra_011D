@@ -2,6 +2,7 @@ package com.optica.service_envio.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.optica.service_envio.model.Notificacion;
 import com.optica.service_envio.repository.NotificacionRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/notificaciones")
 public class NotificacionController {

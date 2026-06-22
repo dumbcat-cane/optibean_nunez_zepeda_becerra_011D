@@ -1,6 +1,8 @@
 package com.optica.service_envio.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,17 +42,15 @@ public class EnvioService {
     }
 
     @Transactional
-    public Envio actualizar(Long id, Envio envioDetalles) {
-        Envio envioExistente = enviorepository.findById(id).orElse(null);
-        if (envioExistente != null) {
+    public Optional<Envio> actualizar(Long id, Envio envioDetalles) {
+        return enviorepository.findById(id).map(envioExistente -> {
             envioExistente.setFechaDespacho(envioDetalles.getFechaDespacho());
             envioExistente.setFechaEntrega(envioDetalles.getFechaEntrega());
             envioExistente.setDireccion(envioDetalles.getDireccion());
             envioExistente.setEstado(envioDetalles.getEstado());
             envioExistente.setIdVenta(envioDetalles.getIdVenta());
             return enviorepository.save(envioExistente);
-        }
-        return null;
+        });
     }
 
     @Transactional
@@ -60,6 +60,10 @@ public class EnvioService {
 
     public List<Notificacion> listarNotificacion() {
         return notificacionrepository.findAll();
+    }
+
+    public void eliminar(Long id){//elimina por id una receta
+        enviorepository.deleteById(id);
     }
 
     private Envio enriquecerConVenta(Envio envio) {
