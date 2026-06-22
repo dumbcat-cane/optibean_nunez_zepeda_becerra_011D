@@ -53,7 +53,7 @@ public class RecetaServiceTest {
         WebClient webClient = Mockito.mock(WebClient.class);
         WebClient.RequestHeadersUriSpec uriSpec = Mockito.mock(WebClient.RequestHeadersUriSpec.class);
         WebClient.RequestHeadersSpec headersSpec = Mockito.mock(WebClient.RequestHeadersSpec.class);
-        ResponseSpec responseSpec = Mockito.mock(ResponseSpec.class); // Ajustado según tu captura de WebClient
+        ResponseSpec responseSpec = Mockito.mock(ResponseSpec.class); 
         
 
         when(webclientBuilder.build()).thenReturn(webClient);
