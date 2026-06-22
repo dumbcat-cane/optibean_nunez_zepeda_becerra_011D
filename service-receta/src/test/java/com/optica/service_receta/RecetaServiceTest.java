@@ -7,11 +7,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-<<<<<<< HEAD
 import java.util.Optional; 
-=======
-import java.util.Optional;
->>>>>>> 017a63fe21384bd52294ef5914acabafe3f45fa7
+
+
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
