@@ -25,11 +25,21 @@ public class EnvioService {
     private WebClient.Builder webClientBuilder;
 
     public List<Envio> listartodos() {
-        return enviorepository.findAll();
+        List<Envio> envios = enviorepository.findAll();
+
+        for(Envio envio : envios){
+        enriquecerConVenta(envio);
+    }
+
+        return envios;
     }
 
     public Envio buscarporid(Long id) {
-        return enviorepository.findById(id).orElse(null);
+        Envio envio = enviorepository.findById(id).orElse(null);
+        if(envio != null){
+            return enriquecerConVenta(envio);
+        }
+        return null;
     }
 
     public List<Envio> buscarPorEstado(String estado) {
